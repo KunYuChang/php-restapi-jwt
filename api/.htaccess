@@ -1,0 +1,16 @@
+# 啟用重寫引擎
+RewriteEngine On
+
+# 檢查所請求的文件是否不存在
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# 檢查所請求的目錄是否不存在
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# 檢查所請求的文件是否不是符號連結
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# 將所有請求重寫到 index.php
+RewriteRule . index.php [L]
+
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
